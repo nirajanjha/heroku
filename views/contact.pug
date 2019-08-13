@@ -1,0 +1,21 @@
+extends layout
+
+block style
+	link(rel='stylesheet', href='../stylesheets/contact.css')
+
+block content
+  
+	.wrapper
+		.contact__container
+			.contact__title
+				h2
+					| Contact us
+					hr
+			form.contact__form
+				p Name
+				input.contact__form-input(type='text')
+				p Email
+				input.contact__form-input(type='text')
+				p Message
+				textarea.contact__form-textarea(type='text')
+				input(type='submit', value='Send message')

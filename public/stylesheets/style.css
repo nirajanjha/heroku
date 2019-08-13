@@ -1,0 +1,22 @@
+body {
+  margin: 0px;
+  
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.navbar ul{
+  float: right;
+}
+
+.navbar ul li{
+  display: inline;
+  margin-right: 50px;
+  
+}
+
+
+
+.footer{
+  height: 200px;
+  background-color: brown;
+}
