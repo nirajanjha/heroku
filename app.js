@@ -22,6 +22,52 @@ app.use(bodyParser.json())
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/my_db', { useNewUrlParser: true });
 
+// contact us schema
+var userschema = mongoose.Schema({
+   name:String,
+   email:String,
+   message:String,
+
+});
+var User = mongoose.model("User", userschema);
+
+// contactus page 
+
+app.post('/contact',function(req, res){
+   var userinfo = req.body;
+   console.log(userinfo.name)
+   console.log(userinfo.email)
+   console.log(userinfo.message)
+
+   if(!userinfo.name || !userinfo.email || !userinfo.message){
+      res.render('new-user', {
+         message: "Sorry, you provided worng info", type: "error"});
+   }
+      else{
+         var newuser = new User({
+            name : userinfo.name,
+            email : userinfo.email,
+            message : userinfo.message,
+
+
+      });
+      
+
+      newuser.save(function(err, User){
+         if(err)
+            res.render('contact');
+         else
+         res.render('user-contact', {
+           message: "New message added", type: "success", user: userinfo});
+      });
+
+   }
+});
+
+
+
+
+
 var personSchema = mongoose.Schema({
   email: String,
   password: String,
